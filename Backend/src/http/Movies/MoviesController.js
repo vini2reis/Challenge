@@ -3,7 +3,7 @@ import axios from 'axios'
 const { TMDB_API_KEY, TMDB_ENDPOINT } = process.env
 
 export async function searchMovie (request, h) {
-  const { query } = request.query
+  const { query } = request
 
   try {
     const q = query.q || ''

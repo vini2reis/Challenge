@@ -1,7 +1,7 @@
 import mongoose from 'mongoose'
 
 const MovieSchema = new mongoose.Schema({
-  tmdbId: String,
+  tmdbId: Number,
   title: String,
   posterPath: String,
   rating: Number
@@ -33,6 +33,7 @@ const UserSchema = new mongoose.Schema({
 })
 
 UserSchema.index({ userId: 1 })
-UserSchema.index({ 'favoriteMovies.shareId': 1 })
+UserSchema.index({ userId: 1, 'favoriteMovies.shareId': 1 })
+UserSchema.index({ userId: 1, 'favoriteMovies.movies.tmdbId': 1 })
 
 export default mongoose.model('User', UserSchema)

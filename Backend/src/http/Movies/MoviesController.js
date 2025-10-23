@@ -2,8 +2,8 @@ import axios from 'axios'
 
 const { TMDB_API_KEY, TMDB_ENDPOINT } = process.env
 
-export async function searchMovie (request, h) {
-  const { query } = request
+export async function searchMovie (req, res) {
+  const { query } = req
 
   try {
     const q = query.q || ''
@@ -18,16 +18,16 @@ export async function searchMovie (request, h) {
 
     const { data } = await axios.get(`${TMDB_ENDPOINT}/search/movie`, { params })
 
-    return h.json(data.results)
+    return res.status(200).json(data.results)
   } catch (error) {
-    console.log('Search movies error: ', error)
+    console.log('Search movies error: ', error.message)
 
-    return h.status(500).json({ message: 'Erro ao buscar filmes' })
+    return res.status(500).json({ message: 'Erro ao buscar filmes' })
   }
 }
 
-export async function movieDetails (request, h) {
-  const { movie_id } = request.params
+export async function movieDetails (req, res) {
+  const { movie_id } = req.params
 
   try {
     const params = {
@@ -37,10 +37,14 @@ export async function movieDetails (request, h) {
 
     const { data } = await axios.get(`${TMDB_ENDPOINT}/movie/${movie_id}`, { params })
 
-    return h.json(data)
+    return res.status(200).json(data)
   } catch (error) {
-    console.log('Get movie details error: ', error)
+    console.log('Get movie details error: ', error.message)
 
-    return h.status(500).json({ message: 'Erro ao buscar detalhes do filme' })
+    if (error.status === 404) {
+      return res.status(404).json({ message: 'Filme não encontrado' })
+    }
+
+    return res.status(500).json({ message: 'Erro ao buscar detalhes do filme' })
   }
 }

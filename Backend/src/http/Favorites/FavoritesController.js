@@ -21,11 +21,15 @@ export async function addFavorite (request, h) {
 
   const update = {
     $push: {
-      favoriteMovies: movie
+      'favoriteMovies.movies': movie
     }
   }
 
   const updatedFavorite = await User.findOneAndUpdate(filter, update)
 
   return h.status(200).json(updatedFavorite.favoriteMovies)
+}
+
+export async function removeFavorite (request, h) {
+  const { movieId, userId } = request.body
 }

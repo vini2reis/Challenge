@@ -56,6 +56,58 @@ export async function removeFavorite (req, res) {
   return res.status(200).json(updatedFavorite.favoriteMovies)
 }
 
+export async function createShareLink (req, res) {
+  const { userId } = req.body
+
+  const filter = {
+    userId
+  }
+
+  const options = {
+    lean: true
+  }
+
+  const user = await User.findOne(filter, {}, options)
+
+  const shareId = user.favoriteMovies?.shareId || v4()
+
+  if (!user.favoriteMovies?.shareId) {
+    const update = {
+      $set: {
+        'favoriteMovies.shareId': shareId
+      }
+    }
+  
+    await User.updateOne(filter, update)
+  }
+
+  const shareLink = `${req.protocol}://${req.get('host')}/shared/${shareId}`
+
+  res.status(200).json({ shareLink })
+}
+
+export async function getShared (req, res) {
+  const { shareId } = req.params
+
+  const filter = {
+    'favoriteMovies.shareId': shareId
+  }
+
+  const options = {
+    lean: true
+  }
+
+  const user = await User.findOne(filter, {}, options)
+
+  if (!user) {
+    return
+  }
+
+  const favorites = user.favoriteMovies?.movies
+
+  res.status(200).json(favorites)
+}
+
 async function verifyFavoriteMovies ({ movieId, filter }) {
   const options = {
     lean: true

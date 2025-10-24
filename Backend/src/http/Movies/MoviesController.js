@@ -26,8 +26,8 @@ export async function searchMovie (req, res) {
   }
 }
 
-export async function movieDetails (req, res) {
-  const { movie_id } = req.params
+export async function getMovieDetails (req, res) {
+  const { movieId } = req.params
 
   try {
     const params = {
@@ -35,7 +35,7 @@ export async function movieDetails (req, res) {
       language: 'pt-BR'
     }
 
-    const { data } = await axios.get(`${TMDB_ENDPOINT}/movie/${movie_id}`, { params })
+    const { data } = await axios.get(`${TMDB_ENDPOINT}/movie/${movieId}`, { params })
 
     return res.status(200).json(data)
   } catch (error) {

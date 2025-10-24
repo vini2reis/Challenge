@@ -2,6 +2,7 @@ import express from 'express'
 import fs from 'fs'
 import path from 'path'
 import { fileURLToPath, pathToFileURL  } from 'url'
+import { handleValidationError } from '../middleware/validationError.js'
 
 const __filename = fileURLToPath(import.meta.url)
 const __dirname = path.resolve(path.dirname(__filename), "..")
@@ -25,5 +26,7 @@ await Promise.all(
 )
 
 app.get('/', (_, h) => h.send('Movie App Backend OK'))
+
+app.use(handleValidationError)
 
 export default app

@@ -3,12 +3,9 @@ import axios from 'axios'
 const { TMDB_API_KEY, TMDB_ENDPOINT } = process.env
 
 export async function searchMovie (req, res) {
-  const { query } = req
+  const { q, page } = req.query
 
   try {
-    const q = query.q || ''
-    const page = query.page || 1
-
     const params = {
       api_key: TMDB_API_KEY,
       query: q,

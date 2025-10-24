@@ -5,7 +5,7 @@ import { fileURLToPath, pathToFileURL  } from 'url'
 import { handleValidationError } from '../middleware/validationError.js'
 
 const __filename = fileURLToPath(import.meta.url)
-const __dirname = path.resolve(path.dirname(__filename), "..")
+const __dirname = path.resolve(path.dirname(__filename), '..')
 
 const app = express()
 app.use(express.json())

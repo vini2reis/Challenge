@@ -1,5 +1,5 @@
-import { fileURLToPath } from "url"
-import path from "path"
+import { fileURLToPath } from 'url'
+import path from 'path'
 import dotenv from 'dotenv'
 import app from './app/app.js'
 
@@ -11,7 +11,7 @@ import { registerModels, connect } from './config/mongooseConnection.js'
 
 await connect()
 
-await registerModels(path.join(__dirname, "database", "models"))
+await registerModels(path.join(__dirname, 'database', 'models'))
 
 dotenv.config()
 

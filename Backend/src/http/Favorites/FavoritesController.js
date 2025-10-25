@@ -1,6 +1,8 @@
 import User from '../../database/models/User.js'
 import { v4 } from 'uuid'
 
+const { FRONTEND_URL } = process.env
+
 export async function addFavorite (req, res) {
   const { movie, userId } = req.body
 
@@ -81,7 +83,7 @@ export async function createShareLink (req, res) {
     await User.updateOne(filter, update)
   }
 
-  const shareLink = `${req.protocol}://${req.get('host')}/shared/${shareId}`
+  const shareLink = `${FRONTEND_URL}/shared/${shareId}`
 
   res.status(200).json({ shareLink })
 }

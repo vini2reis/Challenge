@@ -3,6 +3,26 @@ import { v4 } from 'uuid'
 
 const { FRONTEND_URL } = process.env
 
+export async function getFavorite (req, res) {
+  const { userId } = req.body
+
+  const filter = {
+    userId
+  }
+
+  const options = {
+    lean: true
+  }
+
+  const user = await User.findOne(filter, {}, options)
+
+  if (!user.favoriteMovies?.movies || !user.favoriteMovies?.movies?.length) {
+    return res.status(404).json({ message: 'Nenhum favorito adicionado na lista' })
+  }
+
+  return res.status(200).json(user.favoriteMovies?.movies)
+}
+
 export async function addFavorite (req, res) {
   const { movie, userId } = req.body
 

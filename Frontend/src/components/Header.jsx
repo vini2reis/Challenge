@@ -8,7 +8,7 @@ export default function Header() {
       </Link>
 
       <nav className='nav'>
-        <Link to='/' className='nav-item'>Favoritos</Link>
+        <Link to='/favorites' className='nav-item'>Favoritos</Link>
       </nav>
     </header>
   )

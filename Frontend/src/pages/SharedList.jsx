@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react'
 import { useParams } from 'react-router-dom'
 import { api } from '../api.js'
+import SharedHeader from '../components/SharedHeader.jsx'
 
 export default function SharedList() {
   const { shareId } = useParams()
@@ -14,6 +15,8 @@ export default function SharedList() {
 
   return (
     <div className='container'>
+      <SharedHeader />
+
       <div className='favorites-list'>
         {movies.map(movie => (
           <div className='movie-row' key={movie.tmdbId}>

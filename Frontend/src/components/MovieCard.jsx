@@ -5,7 +5,6 @@ export default function MovieCard({ movie, onAddFavorite, favorites }) {
   const [isFavorite, setIsFavorite] = useState(false)
 
   useEffect(() => {
-    console.log(favorites)
     if (favorites?.some(f => f.tmdbId === movie.id)) {
       setIsFavorite(true)
     }

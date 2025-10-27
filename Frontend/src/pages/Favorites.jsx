@@ -6,7 +6,8 @@ import { Tooltip } from 'react-tooltip'
 import 'react-tooltip/dist/react-tooltip.css'
 
 export default function Favorites() {
-  const userId = '123456789'
+  const userId = localStorage.getItem("userId")
+  
   const {
     favorites,
     errorMessage,

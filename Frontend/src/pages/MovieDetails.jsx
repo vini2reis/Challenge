@@ -5,10 +5,12 @@ import Header from '../components/Header.jsx'
 import useFavorites from '../hooks/useFavorites.js'
 
 export default function MovieDetails() {
+  const userId = localStorage.getItem("userId")
+
   const { movieId } = useParams()
   const [movie, setMovie] = useState(null)
   const [isFavorite, setIsFavorite] = useState(false)
-  const { addFavorite, favorites } = useFavorites('123456789')
+  const { addFavorite, favorites } = useFavorites(userId)
 
   useEffect(() => {
     api.get(`/movies/details/${movieId}`).then(res => setMovie(res.data))

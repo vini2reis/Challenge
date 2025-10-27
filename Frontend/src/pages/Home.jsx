@@ -6,8 +6,10 @@ import MovieGrid from '../components/MovieGrid.jsx'
 import useFavorites from '../hooks/useFavorites.js'
 
 export default function Home() {
+  const userId = localStorage.getItem("userId")
+
   const [movies, setMovies] = useState([])
-  const { addFavorite, favorites } = useFavorites('123456789')
+  const { addFavorite, favorites } = useFavorites(userId)
 
   async function handleSearch(q) {
     const res = await api.get(`/movies/search?q=${q}&page=1`)

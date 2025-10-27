@@ -29,7 +29,22 @@ const UserSchema = new mongoose.Schema({
     required: true,
     unique: true
   },
+  email: {
+    type: String,
+    required: false,
+    unique: true,
+    sparse: true
+  },
+  passwordHash: {
+    type: String,
+    required: false
+  },
   favoriteMovies: FavoriteSchema,
+}, {
+  id: false,
+  toObject: { virtuals: true },
+  toJSON: { virtuals: true },
+  versionKey: false
 })
 
 UserSchema.index({ userId: 1 })

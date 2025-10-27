@@ -71,7 +71,7 @@ body {
 }
 
 .user-info a:hover {
-  color: white;
+  color: #ac9109;
 }
 
 .user-info button {
@@ -121,7 +121,7 @@ body {
 }
 
 .search-button:hover {
-  background-color: red;
+  background-color: #ac9109;
   color: #111827;
 }
 
@@ -208,7 +208,8 @@ body {
 }
 
 .btn-primary:hover {
-  background: #000;
+  background: #ac9109;
+  color: #111827;
 }
 
 .btn-danger {

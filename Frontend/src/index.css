@@ -183,6 +183,10 @@ body {
   background: #b91c1c;
 }
 
+.share-button {
+  margin-bottom: 30px;
+}
+
 /* Details */
 
 .details-container {
@@ -265,4 +269,45 @@ body {
 .movie-title {
   font-weight: 600;
   margin-bottom: 6px;
+}
+
+/* Shared Movies */
+
+.favorites-list {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  width: 100%;
+  max-width: 800px;
+  margin: 50px;
+}
+
+.movie-row {
+  display: flex;
+  gap: 12px;
+  align-items: center;
+  margin-bottom: 12px;
+  background: white;
+  padding: 8px 12px;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+.movie-info {
+  flex: 1;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: flex-start;
+  gap: 12px;
+}
+
+.shared-movie {
+  font-size: 25px;
+  margin-right: 50px;
+}
+
+.rating {
+  font-size: 25px;
+  opacity: 0.7;
 }

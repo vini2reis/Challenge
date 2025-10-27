@@ -3,16 +3,16 @@ import { useState, useEffect } from 'react'
 
 export default function useFavorites(userId) {
   const [favorites, setFavorites] = useState([])
-  const [errorMessage, setErrorMessage] = useState("")
+  const [errorMessage, setErrorMessage] = useState('')
 
   async function fetchFavorites() {
     try {
       const res = await api.get(`/favorites/${userId}`)
 
       setFavorites(res.data || [])
-      setErrorMessage("")
+      setErrorMessage('')
     } catch (err) {
-      const msg = err.response?.data?.message || "Erro ao buscar favoritos"
+      const msg = err.response?.data?.message || 'Erro ao buscar favoritos'
 
       setFavorites([])
       setErrorMessage(msg)
@@ -31,6 +31,11 @@ export default function useFavorites(userId) {
     setFavorites(prev => prev.filter(m => m.tmdbId !== movieId))
   }
 
+  async function shareFavorites() {
+    const res = await api.post('/favorites/share', { userId })
+
+    return res.data.shareLink
+  }
 
   useEffect(() => {
     fetchFavorites()
@@ -41,6 +46,7 @@ export default function useFavorites(userId) {
     errorMessage,
     fetchFavorites,
     addFavorite,
-    removeFavorite
+    removeFavorite,
+    shareFavorites
   }
 }

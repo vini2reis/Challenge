@@ -24,6 +24,7 @@ export default function MovieDetails() {
   if (!movie) return <p>Carregando...</p>
 
   const path = movie.backdrop_path || movie.poster_path
+  const image = path ? `https://image.tmdb.org/t/p/w300${path}` : 'https://res.cloudinary.com/dlobqpfcp/image/upload/v1761584266/background_poster_aurpmm.png'
 
   const favoriteMovie = {
     tmdbId: movie.id,
@@ -50,7 +51,7 @@ export default function MovieDetails() {
         <div className='poster-section'>
           <img
             className='details-poster'
-            src={`https://image.tmdb.org/t/p/w300${path}`}
+            src={image}
             alt={movie.title}
           />
         </div>

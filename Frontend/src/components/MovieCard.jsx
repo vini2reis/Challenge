@@ -10,12 +10,12 @@ export default function MovieCard({ movie, onAddFavorite, favorites }) {
     }
   }, [favorites, movie.id])
 
-  const poster = movie.poster_path ? `https://image.tmdb.org/t/p/w342${movie.poster_path}` : 'https://via.placeholder.com/150x225?text=No+Image'
+  const poster = movie.poster_path ? `https://image.tmdb.org/t/p/w342${movie.poster_path}` : 'https://res.cloudinary.com/dlobqpfcp/image/upload/v1761584267/poster_lsfph8.png'
 
   const favoriteMovie = {
     tmdbId: movie.id,
     title: movie.title,
-    posterPath: movie.poster_path,
+    posterPath: movie.poster_path || '',
     rating: movie.vote_average
   }
 

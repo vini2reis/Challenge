@@ -52,7 +52,11 @@ export default function Favorites() {
 
         {favorites.map(movie => (
           <div className='movie-card' key={movie.tmdbId}>
-            <img src={`https://image.tmdb.org/t/p/w300${movie.posterPath}`} className='movie-poster' />
+            <img src={
+              movie.posterPath ? `https://image.tmdb.org/t/p/w300${movie.posterPath}` : 'https://res.cloudinary.com/dlobqpfcp/image/upload/v1761584267/poster_lsfph8.png' }
+              className='movie-poster'
+            />
+
             <h3 className='movie-title'>{movie.title}</h3>
 
             <div className='actions'>

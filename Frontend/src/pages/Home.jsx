@@ -9,11 +9,22 @@ export default function Home() {
   const userId = localStorage.getItem("userId")
 
   const [movies, setMovies] = useState([])
+  const [page, setPage] = useState(1)
+  const [query, setQuery] = useState('')
   const { addFavorite, favorites } = useFavorites(userId)
 
   async function handleSearch(q) {
+    setQuery(q)
+    setPage(1)
     const res = await api.get(`/movies/search?q=${q}&page=1`)
     setMovies(res.data)
+  }
+
+  async function handleLoadMore() {
+    const nextPage = page + 1
+    const res = await api.get(`/movies/search?q=${query}&page=${nextPage}`)
+    setMovies(prev => [...prev, ...res.data])
+    setPage(nextPage)
   }
 
   return (
@@ -22,6 +33,12 @@ export default function Home() {
         <Header />
         <SearchBar onSearch={handleSearch} />
         <MovieGrid movies={movies} onAddFavorite={addFavorite} favorites={favorites}/>
+
+        {movies.length > 0 && (
+          <button className="button btn-primary" onClick={handleLoadMore}>
+            Carregar Mais
+          </button>
+        )}
       </div>
     </>
   )

@@ -55,7 +55,7 @@ body {
   color: white;
 }
 
-/* Barra de busca */
+/* Search Bar */
 
 .search-form {
   display: flex;
@@ -91,7 +91,7 @@ body {
   color: #111827;
 }
 
-/* Grid de filmes */
+/* Grid */
 .grid {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
@@ -100,7 +100,7 @@ body {
   margin-bottom: 50px;
 }
 
-/* Filmes */
+/* Movies */
 .movie-card {
   background: white;
   padding: 12px;
@@ -155,7 +155,7 @@ body {
   display: inline-block;
 }
 
-/* Botões */
+/* Bottons */
 .button {
   padding: 8px 12px;
   border-radius: 6px;
@@ -181,4 +181,69 @@ body {
 
 .btn-danger:hover {
   background: #b91c1c;
+}
+
+/* Details */
+
+.details-container {
+  display: flex;
+  gap: 20px;
+  align-items: flex-start;
+  margin-top: 20px;
+}
+
+.details-poster {
+  width: 400px;
+  border-radius: 8px;
+}
+
+.details-content {
+  flex: 1;
+}
+
+.details-title {
+  font-size: 28px;
+  font-weight: 700;
+  margin-bottom: 10px;
+}
+
+.details-text {
+  margin: 10px 0;
+  font-size: 20px;
+  line-height: 1.4;
+  text-align: justify;
+}
+
+.poster-section {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.poster-actions {
+  margin-top: 12px;
+  display: flex;
+  gap: 12px;
+  align-items: center;
+  justify-content: center;
+}
+
+.details-rating {
+  font-size: 30px;
+  font-weight: bold;
+}
+
+.details-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 150px;
+  margin-bottom: 10px;
+}
+
+.details-title {
+  font-size: 28px;
+  font-weight: 700;
+  margin: 0;
+  flex: 1;
 }

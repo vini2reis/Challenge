@@ -1,3 +1,4 @@
+import { Link } from 'react-router-dom'
 import { useState, useEffect } from 'react'
 
 export default function MovieCard({ movie, onAddFavorite, favorites }) {
@@ -34,6 +35,10 @@ export default function MovieCard({ movie, onAddFavorite, favorites }) {
       <p><strong>⭐ {movie.vote_average.toFixed(1).replace('.0', '')}</strong></p>
 
       <div className='actions'>
+        <Link to={`/movie/${movie.id}`}>
+          <button className='button btn-primary'>Detalhes</button>
+        </Link>
+
         {isFavorite ? (
           <span className='badge-fav'>Favorito</span>
         ) : (

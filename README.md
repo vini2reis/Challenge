@@ -399,7 +399,7 @@ Cadastra um novo usuario
 | `email`      | string(email) | ✅ | email de acesso |
 | `password`      | string | ✅ | senha com pelo menos 6 digitos |
 
-**Resposta — 200 OK**
+**Resposta — 201 CREATED**
 ```json
 {
   "message": "Usuário criado com sucesso"

@@ -5,7 +5,7 @@ export const addFavoriteSchema = Joi.object({
   movie: Joi.object().keys({
     tmdbId: Joi.number().integer().required().strict(),
     title: Joi.string().required(),
-    posterPath: Joi.string().required(),
+    posterPath: Joi.string().optional().allow(''),
     rating: Joi.number().required().strict()
   }).required()
 })

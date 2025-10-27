@@ -6,8 +6,8 @@ import { validate } from '../../middleware/validate.js'
 const router = express.Router()
 
 router.get(
-  '/',
-  validate(createShareLinkSchema, 'body'),
+  '/:userId',
+  validate(createShareLinkSchema, 'params'),
   getFavorite
 )
 
@@ -31,7 +31,7 @@ router.post(
 
 router.get(
   '/shared/:shareId',
-  validate(getSharedSchema, 'param'),
+  validate(getSharedSchema, 'params'),
   getShared
 )
 

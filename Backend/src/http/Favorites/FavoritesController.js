@@ -4,7 +4,7 @@ import { v4 } from 'uuid'
 const { FRONTEND_URL } = process.env
 
 export async function getFavorite (req, res) {
-  const { userId } = req.body
+  const { userId } = req.params
 
   const filter = {
     userId

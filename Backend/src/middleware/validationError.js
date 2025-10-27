@@ -1,11 +1,11 @@
 export function handleValidationError(error, _, res, next) {
 
-  const { ENVIROMENT } = process.env
+  const { ENVIRONMENT } = process.env
 
   if (error?.isJoi) {
     console.log('Validation Error:', error.message)
 
-    if (ENVIROMENT === 'production') {
+    if (ENVIRONMENT === 'production') {
       return res.status(400).json({ message: 'Requisição Inválida' })
     }
 

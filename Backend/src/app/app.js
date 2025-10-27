@@ -11,7 +11,7 @@ const __filename = fileURLToPath(import.meta.url)
 const __dirname = path.resolve(path.dirname(__filename), '..')
 
 const app = express()
-app.use(cors({ origin: FRONTEND_URL }))
+app.use(cors({ origin: FRONTEND_URL || '*'}))
 app.use(express.json())
 
 const httpDir = path.join(__dirname, 'http')

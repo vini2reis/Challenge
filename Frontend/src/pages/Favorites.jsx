@@ -55,7 +55,7 @@ export default function Favorites() {
             <h3 className='movie-title'>{movie.title}</h3>
 
             <div className='actions'>
-              <Link to={`/movie/${movie.id}`}>
+              <Link to={`/movie/${movie.tmdbId}`}>
                 <button className='button btn-primary'>Detalhes</button>
               </Link>
 

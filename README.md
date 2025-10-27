@@ -83,6 +83,8 @@ npm run dev
 
 Abra http://localhost:5173 ou outro host disponibilizado
 
+Ao utilizar a [aplicação publicada](https://movie-app-challenge-chi-five.vercel.app) pode ocorrer uma demora na resposta do backend assim que acessar, mas após cerca de 45 segundos funciona normalmente
+
 
 
 

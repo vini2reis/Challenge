@@ -134,7 +134,7 @@ Mostra detalhes de um filme.
 **Parâmetros:**
 | Parâmetro | Tipo   | Obrigatório | Descrição |
 |----------|--------|:-----------:|-----------|
-| `movieId`      | string | ✅ | Id do filme |
+| `movieId`      | number | ✅ | Id do filme |
 
 **Resposta — 200 OK**
 ```json
@@ -294,6 +294,14 @@ Adiciona filme aos favoritos.
 | `userId`      | string | ✅ | Id de usuario |
 | `movie`      | objeto | ✅ | Id de usuario |
 
+**Objeto movie
+| Campo | Tipo   | Obrigatório | Descrição |
+|----------|--------|:-----------:|-----------|
+| `tmdbId`      | number | ✅ | Id do filme |
+| `title`      | string | ✅ | Titulo do filme |
+| `posterPath`      | string | ❌ | Imagem do poster do filme caso tenha |
+| `rating`      | number | ✅ | Nota do filme |
+
 **Resposta — 200 OK**
 ```json
 {
@@ -316,7 +324,7 @@ Remove filme dos favoritos.
 | Parâmetro | Tipo   | Obrigatório | Descrição |
 |----------|--------|:-----------:|-----------|
 | `userId`      | string | ✅ | Id de usuario |
-| `movieId`      | string | ✅ | Id do filme |
+| `movieId`      | number | ✅ | Id do filme |
 
 **Resposta — 200 OK**
 ```json
